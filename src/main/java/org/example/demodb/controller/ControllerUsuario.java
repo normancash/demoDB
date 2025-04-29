@@ -1,5 +1,6 @@
 package org.example.demodb.controller;
 
+import jakarta.validation.Valid;
 import org.example.demodb.dto.UsuarioDTO;
 import org.example.demodb.model.Usuario;
 import org.example.demodb.service.IServiceUsuario;
@@ -28,7 +29,7 @@ public class ControllerUsuario {
 
 
     @PostMapping("/save")
-    public UsuarioDTO save(@RequestBody UsuarioDTO usuarioDTO) {
+    public UsuarioDTO save(@RequestBody @Valid UsuarioDTO usuarioDTO) {
          Usuario usuarioDB = modelMapper.map(usuarioDTO,Usuario.class);
          Usuario usuario = serviceUsuario.save(usuarioDB);
          return modelMapper.map(usuario,UsuarioDTO.class);
