@@ -7,6 +7,7 @@ import lombok.Data;
 
 @Data
 public class UsuarioDTO {
+    private Integer id;
     @NotBlank(message="El nombre esta vacio")
     private String nombre;
     @NotBlank(message="El apellido esta vacio")
