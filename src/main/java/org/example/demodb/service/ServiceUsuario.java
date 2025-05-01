@@ -1,5 +1,6 @@
 package org.example.demodb.service;
 
+import org.example.demodb.exception.UsuarioException;
 import org.example.demodb.model.Usuario;
 import org.example.demodb.repository.IRepoUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +39,11 @@ public class ServiceUsuario implements IServiceUsuario{
     }
 
     @Override
-    public Usuario findOne(Integer id) {
-        return repoUsuario.findById(id).orElse(null);
+    public Usuario findOne(Integer id) throws UsuarioException {
+        Usuario u = repoUsuario.findById(id).orElse(null);
+        if (u != null) {
+            return u;
+        }
+        throw new UsuarioException("No existe un usuario con este id:" + id);
     }
 }

@@ -1,5 +1,6 @@
 package org.example.demodb.service;
 
+import org.example.demodb.exception.UsuarioException;
 import org.example.demodb.model.Usuario;
 import org.springframework.stereotype.Service;
 
@@ -16,5 +17,5 @@ public interface IServiceUsuario {
 
     public Usuario update(Usuario usuario);
 
-    public Usuario findOne(Integer id);
+    public Usuario findOne(Integer id) throws UsuarioException;
 }

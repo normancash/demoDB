@@ -2,6 +2,7 @@ package org.example.demodb.controller;
 
 import jakarta.validation.Valid;
 import org.example.demodb.dto.UsuarioDTO;
+import org.example.demodb.exception.UsuarioException;
 import org.example.demodb.model.Usuario;
 import org.example.demodb.service.IServiceUsuario;
 import org.modelmapper.ModelMapper;
@@ -27,6 +28,10 @@ public class ControllerUsuario {
                 .collect(Collectors.toList());
     }
 
+    @GetMapping("/{id}")
+    public UsuarioDTO get(@PathVariable(value="id") Integer id) throws UsuarioException {
+        return modelMapper.map(serviceUsuario.findOne(id),UsuarioDTO.class);
+    }
 
     @PostMapping("/save")
     public UsuarioDTO save(@RequestBody @Valid UsuarioDTO usuarioDTO) {

@@ -1,5 +1,6 @@
 package org.example.demodb.advice;
 
+import org.example.demodb.exception.UsuarioException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -23,4 +24,13 @@ public class HandleException {
                                  ,error.getDefaultMessage()));
          return map;
     }
+
+    @ExceptionHandler(value={Exception.class})
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public Map<String,String> getException(Exception ex) {
+        Map<String,String> map = new HashMap<>();
+        map.put("error",ex.getMessage());
+        return map;
+    }
+
 }
