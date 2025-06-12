@@ -50,4 +50,11 @@ public class ControllerUsuario {
         serviceUsuario.delete(id);
     }
 
+    @PostMapping("/login")
+    public UsuarioDTO login(@RequestBody UsuarioDTO usuarioDTO) {
+        Usuario usuario = serviceUsuario.getLogin(usuarioDTO.getEmail()
+                ,usuarioDTO.getContrasena());
+        return modelMapper.map(usuario,UsuarioDTO.class);
+    }
+
 }
