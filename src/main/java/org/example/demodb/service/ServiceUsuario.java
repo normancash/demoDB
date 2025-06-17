@@ -51,4 +51,10 @@ public class ServiceUsuario implements IServiceUsuario{
     public Usuario getLogin(String email, String contrasena) throws UsuarioException {
         return repoUsuario.getLogin(email, contrasena);
     }
+
+    @Override
+    public Usuario getLogin(String email, String contrasena) {
+        Usuario u = repoUsuario.getLogin(email,contrasena);
+        return u;
+    }
 }
