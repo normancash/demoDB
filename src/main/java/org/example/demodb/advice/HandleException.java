@@ -32,5 +32,4 @@ public class HandleException {
         map.put("error",ex.getMessage());
         return map;
     }
-
 }

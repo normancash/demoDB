@@ -44,6 +44,11 @@ public class ServiceUsuario implements IServiceUsuario{
         if (u != null) {
             return u;
         }
-        throw new UsuarioException("No existe un usuario con este id:" + id);
+        throw new UsuarioException("code-001.No existe un usuario con este id:" + id);
+    }
+
+    @Override
+    public Usuario getLogin(String email, String contrasena) throws UsuarioException {
+        return repoUsuario.getLogin(email, contrasena);
     }
 }

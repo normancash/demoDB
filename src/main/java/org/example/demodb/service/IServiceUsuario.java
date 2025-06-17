@@ -18,4 +18,6 @@ public interface IServiceUsuario {
     public Usuario update(Usuario usuario);
 
     public Usuario findOne(Integer id) throws UsuarioException;
+
+    public Usuario getLogin(String email,String contrasena) throws UsuarioException;
 }

@@ -1,6 +1,7 @@
 package org.example.demodb.controller;
 
 import jakarta.validation.Valid;
+import org.example.demodb.dto.LoginRequest;
 import org.example.demodb.dto.UsuarioDTO;
 import org.example.demodb.exception.UsuarioException;
 import org.example.demodb.model.Usuario;
@@ -48,6 +49,12 @@ public class ControllerUsuario {
     @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable Integer id) {
         serviceUsuario.delete(id);
+    }
+
+    @PostMapping("/login")
+    public UsuarioDTO login(@RequestBody @Valid LoginRequest loginRequest) throws UsuarioException {
+        Usuario usuario = serviceUsuario.getLogin(loginRequest.getUsername(),loginRequest.getPassword());
+        return modelMapper.map(usuario,UsuarioDTO.class);
     }
 
 }
